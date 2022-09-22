@@ -273,7 +273,7 @@ public class Room {
     Note:
     There will be at least one building. If it is not possible to build such house according to the above rules, return -1.
      */
-    static final int[][] DIRS = new int[][] {{1,0},{-1,0},{0,1},{0,-1}};
+//    static final int[][] DIRS = new int[][] {{1,0},{-1,0},{0,1},{0,-1}};
     public int shortestDistance(int[][] grid) { // 515
         if (grid==null || grid.length==0 || grid[0].length==0) {return -1;}
         int rows = grid.length;
@@ -375,16 +375,16 @@ public class Room {
             } // end for dir
         } // end while
     }
-//    private boolean isValid(int row, int col, int rows, int cols) {
-//        if (row<0 || row>=rows || col<0 || col>=cols) {return false;}
-//        return true;
-//    }
-//    private int convert2Dto1D (int row, int col, int cols) {
-//        return row*cols+col;
-//    }
-//    private int[] convert1Dto2D (int index, int cols) {
-//        return new int[] {index/cols,index%cols};
-//    }
+    private boolean isValid(int row, int col, int rows, int cols) {
+        if (row<0 || row>=rows || col<0 || col>=cols) {return false;}
+        return true;
+    }
+    private int convert2Dto1D (int row, int col, int cols) {
+        return row*cols+col;
+    }
+    private int[] convert1Dto2D (int index, int cols) {
+        return new int[] {index/cols,index%cols};
+    }
     public static void main(String[] args) {
         Room solution = new Room();
         char[][] gym = new char[][] {{'C','C','E','O','C'},{'C','C','O','C','E'},{'C','C','E','E','C'},{'C','O','C','E','E'},{'C','C','O','C','C'}};

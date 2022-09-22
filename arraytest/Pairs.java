@@ -724,9 +724,9 @@ public class Pairs {
             }
         }
         return false;
-        int[] result = new int[4];
-        result[0]=Integer.MIN_VALUE;
-        return helper(nums,0,1,result);
+//        int[] result = new int[4];
+//        result[0]=Integer.MIN_VALUE;
+//        return helper(nums,0,1,result);
         // Write your solution here
     }
     private boolean helper(int[] nums, int index, int add, int[] result) {

@@ -137,7 +137,7 @@ public class Missing {
     nums = [1, 2, 2], n = 5
     Return 0.
      */
-    public int minPatches(int[] nums, int n) { 、、 464
+    public int minPatches(int[] nums, int n) { // 464
         if (nums==null || nums.length==0) {return (int) (Math.log(n+1)/Math.log(2));}
         int count = 0, i = 0;
         long miss = 1; // use long to avoid integer overflow error

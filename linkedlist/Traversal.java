@@ -66,7 +66,7 @@ public class Traversal {
     // push root first
     // poll node, print value, push right child and left child to stack
     // its left child will be polled next round
-    public List<Integer> preOrder(TreeNode root) {
+    public List<Integer> preOrder2(TreeNode root) {
         List<Integer> preOrder = new ArrayList<>();
         if (root==null) {return preOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -85,7 +85,7 @@ public class Traversal {
     // then check right child if possible, then poll current node
     // if coming from left child, check right child if possible, then poll current node
     // if coming from right child, poll current node
-    public List<Integer> preOrder(TreeNode root) {
+    public List<Integer> preOrder3(TreeNode root) {
         List<Integer> preOrder = new ArrayList<>();
         if (root==null) {return preOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -121,7 +121,7 @@ public class Traversal {
     // add left node if coming from parent and left child is not null
     // add right node if coming from parent or left child, and right child is not null
     // poll the node if coming from right child, or left and right child are null
-    public List<Integer> preOrder(TreeNode root) {
+    public List<Integer> preOrder4(TreeNode root) {
         List<Integer> preOrder = new ArrayList<>();
         if (root==null) {return preOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -149,7 +149,7 @@ public class Traversal {
     // record right child and left child respectively
     // pre!=cur.right is leftover from previous derivation
     // pre!=cur.left should be a check coming from parent, but put there for symmetry
-    public List<Integer> preOrder(TreeNode root) {
+    public List<Integer> preOrder5(TreeNode root) {
         List<Integer> preOrder = new ArrayList<>();
         if (root==null) {return preOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -174,7 +174,7 @@ public class Traversal {
     // peek+poll==poll
     // after the first visit and polled from stack, the node will not be accessed
     // no additional check for right or left child is needed
-    public List<Integer> preOrder(TreeNode root) {
+    public List<Integer> preOrder6(TreeNode root) {
         List<Integer> preOrder = new ArrayList<>();
         if (root==null) {return preOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -256,7 +256,7 @@ public class Traversal {
     // Method 1b: the other Laioffer solution from answers
     // coming logic to poll and print,
     // when either coming from left but right is null and coming from right
-    public List<Integer> postOrder(TreeNode root) {
+    public List<Integer> postOrder2(TreeNode root) {
         List<Integer> postOrder = new ArrayList<>();
         if (root==null) {return postOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -290,7 +290,7 @@ public class Traversal {
     // if coming from either parent but left child is null or left, then add right child to stack if it is not null
     // if coming from either parent but both children are null, or from left but right child is null,
     // poll current node, and add it to list
-    public List<Integer> postOrder(TreeNode root) {
+    public List<Integer> postOrder3(TreeNode root) {
         List<Integer> postOrder = new ArrayList<>();
         if (root==null) {return postOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -456,7 +456,7 @@ public class Traversal {
     }
     // Method 1b: Laioffer solution
     // without checking root==null corner case
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder4(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode cur = root;
@@ -480,7 +480,7 @@ public class Traversal {
     // if coming from left child, print current node,
     // check right child if possible, then poll current node
     // if coming from right child, poll current node
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder5(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -517,7 +517,7 @@ public class Traversal {
     // Method 2b: combine logic I
     // when coming from parent && cur.left==null and coming from left node
     // since in both cases, we need to print, go right, and poll
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder6(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -546,7 +546,7 @@ public class Traversal {
     // print data either from parent but left child is null or from left child
     // add right child either coming from parent or left child and right child is not null
     // poll current if right child operation is done
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder7(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -574,7 +574,7 @@ public class Traversal {
     }
     // Method 2d: combine logic III
     // as soon as the current node is printed, it can be removed from stack
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder8(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -602,7 +602,7 @@ public class Traversal {
     // Method 2e: simplify logic I
     // since node is polled after printing and before visiting right child
     // there is no way to have pre==cur.right
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder9(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -629,7 +629,7 @@ public class Traversal {
     // allow the node to visit null, so we do not need to check it going down
     // but the node need to be checked to be not null before pushing into stack
     // need a tmp TreeNode to help for moving both pre and cur
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder10(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -656,7 +656,7 @@ public class Traversal {
     // Method 2g: simplify logic III
     // no need to push root into stack before while loop
     // the two logics from previous steps belong to different result of checking cur==null
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder11(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();
@@ -681,7 +681,7 @@ public class Traversal {
     // Method 2h==1a: simplify logic IV
     // pre is no longer needed
     // so tmp is also no longer needed
-    public List<Integer> inOrder(TreeNode root) {
+    public List<Integer> inOrder12(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
         if (root==null) {return inOrder;}
         Deque<TreeNode> stack = new ArrayDeque<>();

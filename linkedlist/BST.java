@@ -551,23 +551,24 @@ public class BST {
     private void traverse(TreeNode root, PriorityQueue<TreeNode> pq, int target, int k) {
         Deque<TreeNode> trav = new ArrayDeque<>();
         TreeNode cur = root;
-        while (cur!=null || !trav.isEmpty()) {
-            if (cur!=null) {
+        while (cur != null || !trav.isEmpty()) {
+            if (cur != null) {
                 trav.offerFirst(cur);
-                cur=cur.left;
+                cur = cur.left;
             } else {
-                cur=trav.pollFirst();
-                if (pq.size()==k) {
-                    if (Math.abs(pq.peek().key-target)>Math.abs(cur.key-target)) {
+                cur = trav.pollFirst();
+                if (pq.size() == k) {
+                    if (Math.abs(pq.peek().key - target) > Math.abs(cur.key - target)) {
                         pq.poll();
                         pq.offer(cur);
                     }
                 } else {
                     pq.offer(cur);
                 }
-                cur=cur.right;
+                cur = cur.right;
             }
         }
+    }
     public static void main(String[] args) {
         BST solution = new BST();
         //System.out.println(solution.isBST(root));

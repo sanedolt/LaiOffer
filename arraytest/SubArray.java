@@ -253,9 +253,25 @@ public class SubArray {
         return firstOne?num:0;
         // Write your solution here
     }
+    private int maxWeight(int[] input) {
+        int len=input.length;
+        int sum = input[len-1];
+        int ans = input[len-1];
+        for (int i=len-2;i>=0;i--) {
+            if (input[i]<sum) {
+                sum+=input[i];
+                ans=Math.max(ans,sum);
+            } else {
+                sum=input[i];
+            }
+        }
+        return ans;
+    }
     public static void main(String[] args) {
         SubArray solution = new SubArray();
-        int[] input = new int[] {4,1,-2,3,-7,-3,-6,7,0,8,6,8,7,-8,3,6,10,6,-8,-1,-6,-2,1,-5,10,-2,10,2,-8,5};
-        System.out.println(solution.minimumLengthOfSubarray(input));
+//        int[] input = new int[] {4,1,-2,3,-7,-3,-6,7,0,8,6,8,7,-8,3,6,10,6,-8,-1,-6,-2,1,-5,10,-2,10,2,-8,5};
+//        System.out.println(solution.minimumLengthOfSubarray(input));
+        int[] input = new int[]{2,9,10,3,7};
+        System.out.println(solution.maxWeight(input));
     }
 }

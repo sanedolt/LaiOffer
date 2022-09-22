@@ -345,6 +345,50 @@ public class IntervalTest {
         return result;
         // Write your solution here
     }
+    public int mostBooked(int n, int[][] meetings) {
+        if (n==1) {return 0;}
+        Arrays.sort(meetings,(a,b)->Integer.compare(a[0],b[0]));
+        int[] count = new int[n];
+        // int[] as room, next available time
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
+            public int compare (int[] a, int[] b) {
+                if (a[1]==b[1]) {
+                    return Integer.compare(a[0],b[0]);
+                    // return a[0]-b[0];
+                } else {
+                    // return Integer.compare(a[1],b[1]);
+                    return a[1]-b[1];
+                }
+            }
+        });
+
+        int len = meetings.length;
+        for (int i=0;i<n;i++) {
+            pq.offer(new int[]{i,0});
+        }
+        int result=0;
+        for (int i=0;i<len;i++) {
+
+            while (pq.peek()[1] < meetings[i][0]) {// order all available room by room index
+                pq.offer(new int[] { pq.poll()[0],meetings[i][0] });
+            }
+
+            int[] current = pq.poll();
+            int curRoom = current[0];
+            int meetingEndTime = current[1] + (meetings[i][1] - meetings[i][0]); // current room endTime + this meeting time
+            count[curRoom]++;
+
+            if (count[curRoom] > count[result]) { // update result
+                result = curRoom;
+            } else if (count[curRoom] == count[result]) {
+                result = Math.min(result, curRoom);
+            }
+
+            pq.offer(new int[] { curRoom, meetingEndTime});
+            
+        }
+        return result;
+    }
     public static void main(String[] args) {
         IntervalTest solution = new IntervalTest();
 //        Interval interval1 = new Interval (7,10);
@@ -358,7 +402,8 @@ public class IntervalTest {
 //        intervals.add(interval4);
 //        System.out.println(solution.length(intervals));
         int[][] intervals = new int[][]{{30,210},{55,251},{205,229},{110,218},{30,99},{0,249},{143,191}};
-        System.out.println(Arrays.deepToString(solution.sessionNum(intervals)));
+//        System.out.println(Arrays.deepToString(solution.sessionNum(intervals)));
+
     }
 
 }

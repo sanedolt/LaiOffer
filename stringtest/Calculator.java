@@ -91,7 +91,7 @@ public class Calculator {
     Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
      */
     int len,index;
-    public int calculate(String s) {
+    public int calculate772(String s) {
         if (s==null || s.length()==0) {return 0;}
         index=0;len=s.length();
         return helper(s);

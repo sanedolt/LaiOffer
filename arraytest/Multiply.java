@@ -11,7 +11,7 @@ public class Multiply {
         if (rowb!=cola) {return null;}
         System.out.println(rowa+" "+cola+" "+rowb+" "+colb);
         // make it O(n^3) instead of O(n^4)
-        Map<Integer, List> sparseA = new HashMap<>();
+        Map<Integer,List> sparseA = new HashMap<>();
         Map<Integer,List> sparseB = new HashMap<>();
         for (int i=0;i<rowa;i++) {
             List<Integer> temp = new ArrayList<>();
