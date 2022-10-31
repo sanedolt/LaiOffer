@@ -170,30 +170,46 @@ public class PartialSum {
         int len=nums.length;
         if (len>20000) {return new int[0];}
         if (k>len/3) {return new int[0];}
-        int[] preSum = new int[len];
-        preSum[0]=nums[0];
-        for (int i=1;i<len;i++) {
-            preSum[i]=preSum[i-1]+nums[i];
+        int[] W = new int[len - k + 1];
+        int currSum = 0;
+        for (int i = 0; i < len; i++) {
+            currSum += nums[i];
+            if (i >= k) {
+                currSum -= nums[i - k];
+            }
+            if (i >= k - 1) {
+                W[i - k + 1] = currSum;
+            }
         }
-        int[] result = new int[3];
-        int max = -1;
-        for (int i=k*3-1;i<len;i++) { // or the ending of 3rd
-            int skipped = (i+1)-(k*3);
-            for (int j=0;j<=skipped;j++) { // skipped at 1st
-                for (int m=0;m<=skipped-j;m++) { // skipped between 1st and 2nd
-                    int cur = preSum[i]-preSum[i-k]; // 3rd
-                    cur+=j>0?preSum[j+k-1]-preSum[j-1]:preSum[j+k-1]; // 1st
-                    cur+=preSum[j+k*2+m-1]-preSum[j+k+m-1]; // 2nd
-                    if (cur>max) {
-                        max=cur;
-                        result[0]=j;
-                        result[1]=j+k+m;
-                        result[2]=i-k+1;
-                    } // end if
-                } // end for k
-            } // end for j
-        } // end for i
-        return result;
+
+        int[] left = new int[W.length];
+        int best = 0;
+        for (int i = 0; i < W.length; i++) {
+            if (W[i] > W[best]) {
+                best = i;
+            }
+            left[i] = best;
+        }
+
+        int[] right = new int[W.length];
+        best = W.length - 1;
+        for (int i = W.length - 1; i >= 0; i--) {
+            if (W[i] >= W[best]) {
+                best = i;
+            }
+            right[i] = best;
+        }
+
+        int[] ans = new int[]{-1, -1, -1};
+        for (int j = k; j < W.length - k; j++) {
+            int i = left[j - k], l = right[j + k];
+            if (ans[0] == -1 || W[i] + W[j] + W[l] > W[ans[0]] + W[ans[1]] + W[ans[2]]) {
+                ans[0] = i;
+                ans[1] = j;
+                ans[2] = l;
+            }
+        }
+        return ans;
         // Write your solution here
     }
     /*

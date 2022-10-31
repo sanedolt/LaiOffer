@@ -13,12 +13,12 @@ public class AmericanoStrategy implements IStrategy {
         return validator.IsValid(DrinkType.AMERICANO,this.recipe);
     }
 
-    public (double, Drink) Process() {
+    public Ready Process() throws Exception {
         if(!IsValid())
             throw new Exception("Recipe isn't valid");
         Drink newAmericano = new Espresso();
         newAmericano.SetRecipe(this.recipe);
-        return (recipe.GetTotalPrice(), newAmericano);
+        return new Ready (recipe.GetTotalPrice(), newAmericano);
     }
 
 }

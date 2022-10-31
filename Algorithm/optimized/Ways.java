@@ -249,37 +249,25 @@ public class Ways {
         int len=message.length();
         int[] dp = new int[len+1];
         dp[0]=1;
-        for (int i=0;i<len;i++) {
+        dp[1] = message.charAt(0) == '*' ? 9 : message.charAt(0) == '0' ? 0 : 1;
+        for (int i=1;i<len;i++) {
             char cur=message.charAt(i);
-            char pre=i==0?':':message.charAt(i-1);
-            if (cur=='0') {
-                if (pre>'2' || pre=='0') {return 0;}
-                if (pre=='*') { // 1 || 2
-                    dp[i+1]=dp[i-1]*2;
-                } else { // 1 || 2
-                    dp[i+1]=dp[i-1];
-                }
-            } else if (cur>='1' && cur<='6') {
-                dp[i+1]=dp[i];
-                if (pre>'2' || pre=='0') {continue;}
-                if (pre=='*') { // 1 || 2
-                    dp[i+1]+=dp[i-1]*2;
-                } else { // 1 || 2
-                    dp[i+1]+=dp[i-1];
-                }
-            } else if (cur>='7' && cur<='9') {
-                dp[i+1]=dp[i];
-                if (pre=='1' || pre=='*') {
-                    dp[i+1]+=dp[i-1];
-                }
-            } else { // cur=='*'
+            char pre=message.charAt(i-1);
+            if (cur=='*') { // cur=='*'
                 dp[i+1]=dp[i]*9;
                 if (pre=='1') {
-                    dp[i+1]+=dp[i-1]*9; // 11~19
+                    dp[i+1]=(dp[i+1]+dp[i-1]*9); // 11~19
                 } else if (pre=='2') {
-                    dp[i+1]+=dp[i-1]*6; // 21~26
+                    dp[i+1]=(dp[i+1]+dp[i-1]*6); // 21~26
                 } else if (pre=='*') {
-                    dp[i+1]+=dp[i-1]*15; //11~19 && 21~26
+                    dp[i+1]=(dp[i+1]+dp[i-1]*15); //11~19 && 21~26
+                }
+            } else {
+                dp[i+1]=cur=='0'?0:dp[i];
+                if (pre=='1' || pre=='2' && cur<='6') {
+                    dp[i+1]=(dp[i+1]+dp[i-1]);
+                } else if (pre=='*') {
+                    dp[i+1]=(dp[i+1]+(cur<='6'?2:1)*dp[i-1]);
                 }
             }
         }

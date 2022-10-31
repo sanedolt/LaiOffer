@@ -6,6 +6,7 @@ public class Account {
 
     public boolean resetPassword(String password) {
         this.password = password;
+        return true;
     };
 
     public String getID() {

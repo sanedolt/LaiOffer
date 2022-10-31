@@ -1,6 +1,6 @@
-package com.laioffer.OOD.blackjack;
+package com.laioffer.OOD.TexasHoldem;
 
-public class Card {
+public class Card implements Comparable<Card> {
     private final Suit suit;
     private final int value;
 
@@ -10,19 +10,11 @@ public class Card {
     }
 
     public int getValue(){
-        return value;
+        return value>1?value:14; // put A as largest
     }
 
     public Suit getSuit(){
         return suit;
-    }
-
-    public boolean isAce(){
-        return value == 1;
-    }
-
-    public boolean isFace(){
-        return value > 10;
     }
 
     @Override
@@ -48,7 +40,7 @@ public class Card {
     }
 
     @Override
-    public int compareTo(Card o) {
-        return this.value - o.value;
+    public int compareTo(Card other) {
+        return (other.getValue()*4+other.getSuit().ordinal())-(this.getValue()*4+this.getSuit().ordinal());
     }
 }

@@ -10,13 +10,15 @@ public class Member extends Account {
     public boolean reserveBookItem(BookItem bookItem) {
         Reservation reservation =
                 BookReservation.fetchReservationDetails(bookItem.getBarcode());
-        if (reservation!=null) {
+        if (reservation != null) {
             throw IllegalAccessException("This book is already reserved");
             return false;
         }
-        BookReservation.Reserve(bookItem,this);
+        BookReservation.Reserve(bookItem, this);
         return true;
-    };
+    }
+
+    ;
 
     public boolean checkoutBookItem(BookItem bookItem) {
         if (borrowed.size() >= MAX_BOOKS_ISSUED_TO_A_USER) {
@@ -53,3 +55,4 @@ public class Member extends Account {
             bookItem.updateBookItemStatus(BookStatus.AVAILABLE);
         }
     }
+}

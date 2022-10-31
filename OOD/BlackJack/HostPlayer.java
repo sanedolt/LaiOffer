@@ -1,4 +1,4 @@
-package com.laioffer.OOD.blackjack;
+package com.laioffer.OOD.BlackJack;
 
 public class HostPlayer extends Player{
     //子类field 默认继承全部父类field

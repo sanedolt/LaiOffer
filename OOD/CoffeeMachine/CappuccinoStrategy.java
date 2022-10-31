@@ -13,12 +13,12 @@ public class CappuccinoStrategy implements IStrategy {
         return validator.IsValid(DrinkType.CAPPUCCINO,this.recipe);
     }
 
-    public (double, Drink) Process() {
+    public Ready Process() throws Exception {
         if(!IsValid())
             throw new Exception("Recipe isn't valid");
         Drink newCappuccino = new Cappuccino();
         newCappuccino.SetRecipe(this.recipe);
-        return (recipe.GetTotalPrice(), newCappuccino);
+        return new Ready (recipe.GetTotalPrice(), newCappuccino);
     }
 
 }

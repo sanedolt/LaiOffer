@@ -1,4 +1,4 @@
-package com.laioffer.OOD.blackjack;
+package com.laioffer.OOD.BlackJack;
 
 public class BlackJackGameSimulator {
     private Deck deck;

@@ -7,7 +7,7 @@ public class DrinkValidator implements IValidator {
     private Map<DrinkType, Set<Ingredient>> map;
 
     public DrinkValidator() {
-        this.map = new HashMap<DrinkType, HashSet<Ingredient>>();
+        this.map = new HashMap<DrinkType, Set<Ingredient>>();
     }
 
     public void Set(DrinkType type, Ingredient ingredient){
@@ -25,7 +25,7 @@ public class DrinkValidator implements IValidator {
         map.get(type).remove(ingredient);
     }
 
-    public void IsValid(DrinkType type, Recipe recipe) {
+    public boolean IsValid(DrinkType type, Recipe recipe) {
         if(!map.containsKey(type))
             return false;
 

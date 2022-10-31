@@ -21,16 +21,16 @@ public class MyHashMap {
         }
     }
     private static final int DEFAULT_CAPACITY = 16;
-    private static final double DEFAULT_LOAD_FACTOR = 0.75f;
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private Node<K,V>[] array;
     private int size;
     private float loadFactor;
     private int SCALE_FACTOR = 2;
 
-    public HashMap() {
+    public MyHashMap() {
         this(DEFAULT_CAPACITY,DEFAULT_LOAD_FACTOR);
     }
-    public HashMap(int cap, float loadFactor) {
+    public MyHashMap(int cap, float loadFactor) {
         if (cap<=0) {
             throw new IllegalArgumentException("cap can not be negative");
         }

@@ -9,7 +9,7 @@ public class Mixer {
         this.strategy = strategy;
     }
 
-    public (double, Drink) Process() {
+    public Ready Process() throws Exception {
         if(this.strategy == null)
             throw new Exception("Please choose strategy");
 

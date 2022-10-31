@@ -12,7 +12,7 @@ public class User {
     private List<Card> cards;
     public User(String name) {
         this.name = name;
-        List<Card> = new ArrayList<>();
+        cards = new ArrayList<>();
     }
 
     public String getName() {

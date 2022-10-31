@@ -138,7 +138,7 @@ public class Elevator {
         // be offered, downQueue is empty
         if (curDir == Status.IDLE || curDir == reqDir) { // case0&2
             if (reqDir == Status.UP && (curDir == Status.IDLE || reqFloor > curFloor)) {
-                upQueue.offer(reqFloor)
+                upQueue.offer(reqFloor);
             } else if (reqDir == Status.DOWN && (curDir == Status.IDLE || reqFloor < curFloor)) {
                 downQueue.offer(reqFloor);
             } else if (reqDir == Status.UP) { // case2.2: UP

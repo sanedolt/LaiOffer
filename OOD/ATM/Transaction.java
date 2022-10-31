@@ -14,4 +14,6 @@ public abstract class Transaction {
         this.transactionId = UUID.randomUUID().toString();
         this.transactionTime = LocalTime.now();
     }
-    public abstract boolean makeTransaction (double amount);
+
+    public abstract boolean makeTransaction(double amount);
+}

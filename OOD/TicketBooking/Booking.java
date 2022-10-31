@@ -27,7 +27,7 @@ public class Booking {
     public boolean makePayment(Payment payment) {
         // if payments succeeds
         // this.payment = payment;
-        // return true;
+         return true;
 
         // if payment is unsuccessful:
         // return false;
